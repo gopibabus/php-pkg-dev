@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Gopibabu\Jokes\Tests;
@@ -17,7 +18,7 @@ class JokeFactoryTest extends TestCase
     {
         $mock = new MockHandler(
             [
-                new Response(200, [], '{ "type": "success", "value": { "id": 356, "joke": "We live in an expanding universe. All of it is trying to get away from Chuck Norris.", "categories": [] } }')
+                new Response(200, [], '{ "type": "success", "value": { "id": 356, "joke": "We live in an expanding universe. All of it is trying to get away from Chuck Norris.", "categories": [] } }'),
             ]
         );
 
@@ -25,6 +26,6 @@ class JokeFactoryTest extends TestCase
         $client = new Client(['handler' => $handlerStack]);
 
         $joke = new JokeFactory($client);
-        $this->assertSame("We live in an expanding universe. All of it is trying to get away from Chuck Norris.", $joke->generateJoke());
+        $this->assertSame('We live in an expanding universe. All of it is trying to get away from Chuck Norris.', $joke->generateJoke());
     }
 }
