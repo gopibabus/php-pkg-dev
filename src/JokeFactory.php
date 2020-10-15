@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Gopibabu\Jokes;
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -20,7 +19,8 @@ class JokeFactory
     /**
      * @param Client $client
      */
-    public function __construct(Client $client = null){
+    public function __construct(Client $client = null)
+    {
         $this->client = $client ?: new Client();
     }
 
@@ -31,7 +31,7 @@ class JokeFactory
     public function generateJoke()
     {
         $response = $this->client->get(self::API_ENDPOINT);
-        $joke =  json_decode($response->getBody()->getContents());
+        $joke = json_decode($response->getBody()->getContents());
 
         return $joke->value->joke;
     }
